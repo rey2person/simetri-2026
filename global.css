@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+.font-zelda{
+    font-family:'Zelda', sans-serif;
+}
+
 body {
   background-color: black;
   color: white;
