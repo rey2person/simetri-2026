@@ -5,229 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio-Reza Firdausi El Rosyadi</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- <script src="tailwind.js"></script> -->
     <link rel="stylesheet" href="global.css">
-
+    <style>
+        body{overflow-x:hidden;}
+        #bg-gerak{animation:kenBurns 25s infinite alternate ease-in-out; will-change:transform;}
+        @keyframes kenBurns{0%{transform:scale(1.15) translate(0,0); filter:brightness(1) saturate(1);}100%{transform:scale(1.32) translate(-30px,-15px); filter:brightness(1.2) saturate(1.2);}}
+        .particle{position:absolute;width:6px;height:6px;background:#F3B641;border-radius:50%;box-shadow:0 0 12px #F3B641;animation:naik linear infinite}
+        @keyframes naik{0%{transform:translateY(100vh);opacity:0}20%{opacity:1}100%{transform:translateY(-10vh);opacity:0}}
+        .light-ray{position:absolute; top:-20%; left:5%; width:35%; height:140%; background:linear-gradient(105deg, transparent 40%, rgba(160,190,255,0.12) 50%, transparent 60%); transform:rotate(12deg); animation:rayMove 14s infinite linear; pointer-events:none; filter:blur(1px);}
+        .light-ray.r2{left:55%; animation-duration:22s; animation-delay:-7s; width:25%; opacity:0.7;}
+        @keyframes rayMove{0%{transform:translateX(-150%) rotate(12deg); opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateX(250%) rotate(12deg); opacity:0}}
+        .fog{position:absolute; inset:-20%; background:radial-gradient(ellipse at 30% 60%, rgba(180,200,255,0.08) 0%, transparent 60%); animation:fogDrift 40s infinite alternate ease-in-out; pointer-events:none;}
+        @keyframes fogDrift{0%{transform:translate(-5%,-2%)}100%{transform:translate(5%,3%)}}
+        .leaf{position:absolute; top:-10%; pointer-events:none; animation:leafFall linear infinite;}
+        @keyframes leafFall{0%{transform:translateY(-10vh) translateX(0) rotate(0deg); opacity:0}10%{opacity:0.6}90%{opacity:0.6}100%{transform:translateY(110vh) translateX(120px) rotate(720deg); opacity:0}}
+        .huruf{display:inline-block; cursor:pointer; line-height:1; transition: transform 0.2s;}
+        .huruf:hover{transform:translateY(-6px) scale(1.1); color:#F3B641;}
+        .huruf.loncat{animation:loncat 0.6s ease;}
+        @keyframes loncat{0%,100%{transform:translateY(0)} 35%{transform:translateY(-28px) rotate(3deg); color:#F3B641;} 60%{transform:translateY(-10px)}}
+    </style>
 </head>
-
 <body class="font-zelda">
-    <!-- Navbar (Modul 3) -->
     <header class="z-[60] sticky top-0">
-        <nav class="relative z-[60] flex items-center justify-between backdrop-filter backdrop-blur-md bg-opacity-40 px-[90px] h-[90px]">
-            <!-- Area Kiri (Logo & Menu) -->
+        <nav class="relative z-[60] flex items-center justify-between backdrop-filter backdrop-blur-md bg-opacity-40 px-6 lg:px-[90px] h-[90px]">
             <div class="flex flex-row items-center gap-[60px]">
                     <img class="h-14 w-auto" src="images/navbar/navbar-logo.svg" alt="Home"/>
-
                     <ul class="hidden lg:flex lg:flex-row gap-[64px] text-white text-[2rem]">
-                        <a class="hover:underline hover:text-[#F3B641]" href="#hero">
-                            Home
-                        </a>
-                        <a class="hover:underline hover:text-[#F3B641]" href="#aboutme">
-                            About Me
-                        </a>
-                        <a class="hover:underline hover:text-[#F3B641]" href="#myskills">
-                            My Skills
-                        </a>
-                        <a class="hover:underline hover:text-[#F3B641]" href="#experience">
-                            My Experience
-                        </a>
+                        <a class="hover:underline hover:text-[#F3B641]" href="#hero">Home</a>
+                        <a class="hover:underline hover:text-[#F3B641]" href="#aboutme">About Me</a>
+                        <a class="hover:underline hover:text-[#F3B641]" href="#myskills">My Skills</a>
+                        <a class="hover:underline hover:text-[#F3B641]" href="#experience">My Experience</a>
                     </ul>
             </div>
-
-            <!-- Area Kanan (Sosmed) -->
             <div class="flex flex-row items-center gap-3">
-                <div class="hidden lg:flex lg:flex-row items-cenlg screenter gap-[15px]">
-                <!-- lg screen -->
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://x.com/HMSI_ITS" target="_blank">
-                    <img class="w-11" src="images/navbar/x-logo.svg" alt="X" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.tiktok.com/@hmsi_its" target="_blank">
-                    <img class="w-11" src="images/navbar/tiktok-logo.svg" alt="TikTok" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.instagram.com/hmsi_its" target="_blank">
-                    <img class="w-11" src="images/navbar/ig-logo.svg" alt="Instagram" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://youtube.com/@layarHMSI" target="_blank">
-                    <img class="w-11" src="images/navbar/yt-logo.svg" alt="Youtube" />
-                </a>
+                <div class="hidden lg:flex lg:flex-row items-center gap-[15px]">
+                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://x.com/HMSI_ITS" target="_blank"><img class="w-11" src="images/navbar/x-logo.svg" alt="X" /></a>
+                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.tiktok.com/@hmsi_its" target="_blank"><img class="w-11" src="images/navbar/tiktok-logo.svg" alt="TikTok" /></a>
+                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.instagram.com/hmsi_its" target="_blank"><img class="w-11" src="images/navbar/ig-logo.svg" alt="Instagram" /></a>
+                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://youtube.com/@layarHMSI" target="_blank"><img class="w-11" src="images/navbar/yt-logo.svg" alt="Youtube" /></a>
                 </div>
-
-                <!-- sm screen -->
                 <button id="hamburgerBtn" class="flex lg:hidden items-center justify-center w-[48px] h-[48px] bg-[#4C1C0E] rounded-lg z-[60]">
                     <img id="iconHamburger" src="./images/navbar/menu.svg" alt="hamburger" class="h-[38.97px] w-[38.97px]"/>
                     <img id="iconClose" src="./images/navbar/exit.svg" alt="hamburgerClose" class="h-[38.97px] w-[38.97px] hidden"/>
                 </button>
             </div>
         </nav>
-
-        <!-- sm screen sidebar -->
          <div id="mobileMenu" class="lg:hidden backdrop-filter backdrop-blur-md bg-opacity-40 fixed inset-0 translate-x-full z-[50] transition-transform duration-250 ease-in-out">
             <div class="h-[90px] flex items-center px-6"></div>
-            <!-- nav texts -->
             <ul class="flex flex-col items-center text-center py-6 text-white text-[2rem]">
-                <li class="w-full py-4">
-                    <a class="hover:underline hover:text-[#F3B641]" href="#hero">
-                        Home 
-                    </a>
-                </li>
-                <li class="w-full py-4">
-                    <a class="hover:underline hover:text-[#F3B641]" href="#aboutme">
-                        About Me
-                    </a>
-                </li>
-                <li class="w-full py-4">
-                    <a class="hover:underline hover:text-[#F3B641]" href="#myskills">
-                        My Skills
-                    </a>
-                </li>
-                <li class="w-full py-4">
-                    <a class="hover:underline hover:text-[#F3B641]" href="#experience">
-                        My Experience
-                    </a>
-                </li>
+                <li class="w-full py-4"><a class="hover:underline hover:text-[#F3B641]" href="#hero">Home</a></li>
+                <li class="w-full py-4"><a class="hover:underline hover:text-[#F3B641]" href="#aboutme">About Me</a></li>
+                <li class="w-full py-4"><a class="hover:underline hover:text-[#F3B641]" href="#myskills">My Skills</a></li>
+                <li class="w-full py-4"><a class="hover:underline hover:text-[#F3B641]" href="#experience">My Experience</a></li>
             </ul>
-
-            <!-- icons -->
             <div class="flex flex-row items-center justify-center gap-4">
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://x.com/HMSI_ITS" target="_blank">
-                    <img class="w-11 text-[#C07E4E]" src="images/navbar/x-logo.svg" alt="X" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.tiktok.com/@hmsi_its" target="_blank">
-                    <img class="w-11"src="images/navbar/tiktok-logo.svg" alt="TikTok" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://www.instagram.com/hmsi_its" target="_blank">
-                    <img class="w-11" src="images/navbar/ig-logo.svg" alt="Instagram" />
-                </a>
-                <a class="transition duration-200 ease-in-out hover:grayscale hover:opacity-70" href="https://youtube.com/@layarHMSI" target="_blank">
-                    <img class="w-11" src="images/navbar/yt-logo.svg" alt="Youtube" />
-                </a>
+                <a href="https://x.com/HMSI_ITS" target="_blank"><img class="w-11" src="images/navbar/x-logo.svg" alt="X" /></a>
+                <a href="https://www.tiktok.com/@hmsi_its" target="_blank"><img class="w-11" src="images/navbar/tiktok-logo.svg" alt="TikTok" /></a>
+                <a href="https://www.instagram.com/hmsi_its" target="_blank"><img class="w-11" src="images/navbar/ig-logo.svg" alt="Instagram" /></a>
+                <a href="https://youtube.com/@layarHMSI" target="_blank"><img class="w-11" src="images/navbar/yt-logo.svg" alt="Youtube" /></a>
             </div>
          </div>
     </header>
-
     <script src="./js/mobileNav.js"></script>
 
     <main class="relative">
-        <!-- Background image -->
-        <div class="fixed inset-0 -z-20 bg-cover bg-no-repeat bg-center bg-[url('./images/background/Nocturna-enclave.png')] items-center justify-center"></div>
-        
-        <!-- Dark Overlay -->
+        <div class="fixed inset-0 -z-20 overflow-hidden bg-[#050a18]">
+            <div id="bg-gerak" class="absolute inset-0 bg-cover bg-no-repeat bg-center bg-[url('./images/background/Nocturna-enclave.png')]"></div>
+            <div class="light-ray"></div>
+            <div class="light-ray r2"></div>
+            <div class="fog"></div>
+            <canvas id="fireflyCanvas" class="absolute inset-0 pointer-events-none"></canvas>
+            <div id="leafContainer" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="particle" style="left:10%; animation-duration:12s"></div>
+                <div class="particle" style="left:30%; animation-duration:15s; animation-delay:0.5s"></div>
+                <div class="particle" style="left:60%; animation-duration:10s; animation-delay:1s"></div>
+                <div class="particle" style="left:80%; animation-duration:18s; animation-delay:1.5s"></div>
+            </div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.6)_100%)]"></div>
+        </div>
         <div id="bg-overlay" class="fixed inset-0 -z-10 bg-black opacity-0 pointer-events-none"></div>
 
-        <!-- Section 1 - Hero -->
-        <section id="hero" class="w-full flex flex-col pt-[166px] md:pt-[270.5px] justify-center items-center gap-4">
-            <div class="flex flex-col w-full h-full items-center justifi-center">
-                <h1 class="uppercase text-[4rem] md:text-[6rem] lg:text-[8rem] text-white text-center [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none">
-                    Portofolio Acu
-                </h1>
+        <section id="hero" class="w-full flex flex-col pt-[166px] md:pt-[270.5px] justify-center items-center gap-4 px-4">
+            <div class="flex flex-col w-full h-full items-center justify-center">
+                <h1 id="judulGerak" class="uppercase text-[2.8rem] sm:text-[4rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] text-white text-center [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none select-none cursor-pointer flex flex-wrap justify-center">Portofolio Gw</h1>
             </div>
             <div class="flex min-w-[338px] lg:w-[700.39px] aspect-[341/43] lg:aspect[701/63] items-center justify-center bg-[url(images/hero/paper-scroll-hero-mobile.svg)] lg:bg-[url(images/hero/paper-scroll-hero-desktop.svg)] bg-center bg-cover lg:bg-contain bg-no-repeat pb-1.5">
                 <p class="text-[#7A3D21] text-[1.7rem] md:text-[2rem] lg:text-[2rem] font-times font-bold">Reza Firdausi El Rosyadi</p>
             </div>
             <div class="flex w-full justify-center items-center transition-all duration-100 hover:brightness-90">
-                <a href="#aboutme" class="px-[51px] py-[4px] md:px-[119.5px] md:py-[8px] bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] rounded-[8px] border-[#F3B641] border-[1px] outline-[#592918] outline-[1px] drop-shadow-[0_8px_0_#592918]">
-                    <p class="uppercase text-white text-[1.3rem] md:text-[1.75rem] md:leading-none">EXPLORE MORE</p>
-                </a>
+                <a href="#aboutme" class="px-[51px] py-[4px] md:px-[119.5px] md:py-[8px] bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] rounded-[8px] border-[#F3B641] border-[1px] outline-[#592918] outline-[1px] drop-shadow-[0_8px_0_#592918]"><p class="uppercase text-white text-[1.3rem] md:text-[1.75rem] md:leading-none">EXPLORE MORE</p></a>
             </div>
         </section>
 
-        <!-- Section 2 - About Me -->
         <section id="aboutme" class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-24 px-6 md:px-16 lg:px-[90px] mt-100 lg:mt-60">
-            <div class="order-1 lg:2 shrink-0">
-                <div class="relative w-[240px] md:w-[280px] lg:w-[340px] aspect-[700/1040]">
-                    <img src="images/fotoku/SAVE_20261024_133843.jpg" alt="myPicture" class="absolute inset-0 w-full h-full z-10 pointer-events-none" />
-                </div>
-            </div>
-
+            <div class="order-1 lg:2 shrink-0"><div class="relative w-[240px] md:w-[280px] lg:w-[340px] aspect-[700/1040]"><img src="images/fotoku/SAVE_20261024_133843.jpg" alt="myPicture" class="absolute inset-0 w-full h-full z-10 pointer-events-none object-cover" /></div></div>
             <div class="order-2 lg:order-1 flex flex-col gap-4 max-w-[560px] text-center lg:text-left">
-                <h1 class="uppercase text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none">ABOUT
-                    <span class="hidden lg:inline">
-                        ME
-                    </span>
-                </h1>
-
-                <p class="px-[100px] text-[32px]">
-                  Hello im from SMKN 1 SURABAYA software engineering my name is reza firdausi el rosyadi my hobbi is playing
-                  games and basketball im proplayer ex imo santay
-                </p>
-
+                <h1 id="judulAbout" class="uppercase text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none select-none cursor-pointer flex flex-wrap justify-center lg:justify-start">ABOUT ME</h1>
+                <p class="px-6 lg:px-0 text-[1.25rem] md:text-[1.5rem] lg:text-[32px] leading-snug">Hello im from SMKN 1 SURABAYA software engineering my name is reza firdausi el rosyadi my hobbi is playing games and basketball im proplayer ex imo santay</p>
             </div>
         </section>
 
-        <!-- Section 3 - My Skills -->
-        <section id="My-Skills" class="flex justify-center mt-100">
+        <section id="myskills" class="flex justify-center mt-100">
             <div class="flex flex-col text-center gap-4">
-                <h1 class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none">
-                    MY SKILLS
-                </h1>
-
+                <h1 id="judulSkills" class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none select-none cursor-pointer flex justify-center flex-wrap">MY SKILLS</h1>
                 <div class="relative">
-                    <!-- Laptop and Tab Image -->
-                    <img src="images/My-Skills/wood plank.svg" alt="Papan kayu" class="hidden md:block lg:w-[769.08px] md:w-[500.17px]">
-                    <!-- Mobile image -->
-                    <img src="images/My-Skills/wood plank - mobile.svg" alt="Papan kayu" class="block md:hidden w-[25rem]">
-
+                    <img src="images/My-Skills/wood plank.svg" alt="Papan kayu" class="hidden md:block lg:w-[769.08px] md:w-[500.17px]"><img src="images/My-Skills/wood plank - mobile.svg" alt="Papan kayu" class="block md:hidden w-[25rem]">
                     <div class="absolute inset-0 flex flex-col text-left px-15 pt-10 gap-1 text-[#592918]">
                         <h1 class="text-[2.75rem] md:text-[2.5rem] lg:text-[3.75rem]">Aku tertarik belajar</h1>
-                        <ul class="font-times list-disc ml-8 text-[1rem] md:text-[1.5rem] lg:text-[2rem]">
-                            <li>Aku suka Matematika</li>
-                            <li>Aku suka IPA</li>
-                            <li>Aku suka Bahasa inggris</li>
-                        </ul>
-
-                        <div class="flex w-full justify-center items-center transition-all duration-100">
-                            <a class="absolute bottom-[40px] md:bottom-[25px] lg:bottom-[50px] px-8 pt-[8px] rounded-[8px] bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] border-[1px] border-[#F3B641] outline-[1px] outline-[#592918] drop-shadow-[0_5px_0_#592918] hover:brightness-90"
-                                href="#experience">
-                                <p class="text-white text-[2rem] md:text-[1.5rem] lg:text-[2.5rem] leading-none">My Experience
-                                    </p>
-                            </a>
-                        </div>
+                        <ul class="font-times list-disc ml-8 text-[1rem] md:text-[1.5rem] lg:text-[2rem]"><li>Aku suka Matematika</li><li>Aku suka IPA</li><li>Aku suka Bahasa inggris</li></ul>
+                        <div class="flex w-full justify-center items-center transition-all duration-100"><a class="absolute bottom-[40px] md:bottom-[25px] lg:bottom-[50px] px-8 pt-[8px] rounded-[8px] bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] border-[1px] border-[#F3B641] outline-[1px] outline-[#592918] drop-shadow-[0_5px_0_#592918] hover:brightness-90" href="#experience"><p class="text-white text-[2rem] md:text-[1.5rem] lg:text-[2.5rem] leading-none">My Experience</p></a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4 - My Experience -->
         <section id="experience" class="mt-100 mb-50">
             <div class="flex flex-col gap-[1rem] items-center">
-                <h1 class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_5px_0_#7A3D21] text-center">
-                    MY EXPERIENCE
-                </h1>
-
-                <div class="flex flex-col md:flex-row lg:flex-row gap-[1rem]">
-                    <img class="w-[600px]" src="images/fotoku/foto1.png" alt="Deskripsi foto 1">
-                    <img class="w-[600px]" src="images/fotoku/foto2.png" alt="Deskripsi foto 2">
-                </div>
-
-                <div class="flex flex-col md:flex-row lg:flex-row gap-[1rem]">
-                    <img class="w-[600px]" src="images/fotoku/foto3.png" alt="Deskripsi foto 3">
-                    <img class="w-[600px]" src="images/fotoku/foto4.png" alt="Deskripsi foto 4">
-                </div>
+                <h1 id="judulExperience" class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_5px_0_#7A3D21] text-center select-none cursor-pointer flex justify-center flex-wrap">MY EXPERIENCE</h1>
+                <div class="flex flex-col md:flex-row gap-[1rem]"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto1.png"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto2.png"></div>
+                <div class="flex flex-col md:flex-row gap-[1rem]"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto3.png"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto4.png"></div>
             </div>
         </section>
     </main>
     <script src="./js/bgScrollEffect.js"></script>
 
     <footer class="w-full h-[500px] md:h-[350px] lg:h-[600px] bg-[url('./images/footer/bg-footer.png')] bg-cover bg-center px-4 py-8 lg:px-[90px] lg:py-[88px] lg:border-t-[20px] lg:border-t-[#7A3D21] flex justify-center items-center">
-        
-        <!-- frame -->
          <div class="flex flex-col sm:w-full h-[440px] md:w-170 lg:h-full lg:w-full bg-[url('./images/footer/frame-footer-mobile.png')] md:bg-[url('./images/footer/frame-footer-desktop.png')] bg-center bg-contain bg-no-repeat px-6 py-10 lg:px-[20px] items-center justify-center">
-            <!-- Konten Utama -->
-  
-            <div class="flex flex-col md:flex-row lg:flex-row items-center justify-center gap-2 lg:gap-[00px]">
-                <!-- Menu -->
-                <nav class="flex flex-col md:flex-row lg:flex-row items-center lg:items-start gap-3 lg:gap-6">
-                    <a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#hero">Home</a>
-                    <a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#aboutme">About Me</a>
-                    <a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#myskills">My Skills</a>
-                    <a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#experience">My Experience</a>
-                </nav>
-            </div>
-            
-            <p class="font-times font-bold text-[#f9DCB4] text-[15px] lg:text-[20px] mt-4">
-                &copy; SIMETRI HMSI ITS
-            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-2"><nav class="flex flex-col md:flex-row items-center gap-3 lg:gap-6"><a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#hero">Home</a><a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#aboutme">About Me</a><a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#myskills">My Skills</a><a class="text-[#C07E4E] hover:text-[#F9DCB4] text-[1.5rem] lg:text-[32px]" href="#experience">My Experience</a></nav></div><p class="font-times font-bold text-[#f9DCB4] text-[15px] lg:text-[20px] mt-4">&copy; SIMETRI HMSI ITS</p>
          </div>
     </footer>
+
+    <script>
+      const canvas = document.getElementById('fireflyCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, fireflies=[];
+      function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+      window.addEventListener('resize', resize); resize();
+      class Firefly{
+        constructor(){ this.reset(); }
+        reset(){
+          this.x=Math.random()*w; this.y=Math.random()*h;
+          this.vx=(Math.random()-0.5)*0.5; this.vy=(Math.random()-0.5)*0.5;
+          this.size=Math.random()*2.5+0.5; this.opacity=Math.random(); this.blink=(Math.random()*0.02+0.008)*(Math.random()>0.5?1:-1);
+        }
+        update(){
+          this.x+=this.vx; this.y+=this.vy; this.opacity+=this.blink;
+          if(this.opacity>1||this.opacity<0.1) this.blink*=-1;
+          if(this.x<0||this.x>w||this.y<0||this.y>h){ this.vx*=-1; this.vy*=-1; }
+        }
+        draw(){
+          ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+          ctx.fillStyle=`rgba(180,220,255,${this.opacity})`;
+          ctx.shadowBlur=10; ctx.shadowColor='#9ecfff'; ctx.fill(); ctx.shadowBlur=0;
+        }
+      }
+      for(let i=0;i<40;i++) fireflies.push(new Firefly());
+      function anim(){ ctx.clearRect(0,0,w,h); fireflies.forEach(f=>{f.update(); f.draw();}); requestAnimationFrame(anim); }
+      anim();
+
+      // DAUN HUTAN JATUH - SESUAI TEMA
+      const leafContainer = document.getElementById('leafContainer');
+      const leaves = ['🍂','🍃'];
+      function createLeaf(){
+        const el=document.createElement('div'); el.className='leaf'; el.innerText=leaves[Math.floor(Math.random()*leaves.length)];
+        el.style.left=Math.random()*100+'%'; el.style.animationDuration=(Math.random()*9+8)+'s'; el.style.fontSize=(Math.random()*8+12)+'px';
+        leafContainer.appendChild(el); setTimeout(()=>el.remove(), 17000);
+      }
+      setInterval(createLeaf, 900);
+
+      const bg=document.getElementById('bg-gerak');
+      document.addEventListener('mousemove', e=>{
+        const x=(e.clientX/w-0.5)*20; const y=(e.clientY/h-0.5)*12;
+        bg.style.transform=`translate(${x}px, ${y}px) scale(1.32)`;
+      });
+
+      function bikinHurufLoncat(id){
+        const judul=document.getElementById(id); if(!judul) return;
+        const teks=judul.innerText.replace(/\s+/g,' ').trim(); judul.innerHTML='';
+        teks.split('').forEach(c=>{
+          const s=document.createElement('span'); s.className='huruf'; s.innerHTML=c===' '?'&nbsp;':c; judul.appendChild(s);
+          s.addEventListener('click', e=>{ e.stopPropagation(); s.classList.remove('loncat'); void s.offsetWidth; s.classList.add('loncat'); setTimeout(()=>s.classList.remove('loncat'),600); });
+        });
+        judul.addEventListener('click', ()=>{ judul.querySelectorAll('.huruf').forEach((h,i)=>{ setTimeout(()=>{ h.classList.remove('loncat'); void h.offsetWidth; h.classList.add('loncat'); setTimeout(()=>h.classList.remove('loncat'),600); }, i*50); }); });
+      }
+      bikinHurufLoncat('judulGerak'); bikinHurufLoncat('judulAbout'); bikinHurufLoncat('judulSkills'); bikinHurufLoncat('judulExperience');
+    </script>
 </body>
 </html>
