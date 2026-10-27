@@ -23,9 +23,25 @@
         .huruf:hover{transform:translateY(-6px) scale(1.1); color:#F3B641;}
         .huruf.loncat{animation:loncat 0.6s ease;}
         @keyframes loncat{0%,100%{transform:translateY(0)} 35%{transform:translateY(-28px) rotate(3deg); color:#F3B641;} 60%{transform:translateY(-10px)}}
+        
+        /* === FITUR BARU REZA === */
+        #progressBar{position:fixed; top:0; left:0; height:4px; background:linear-gradient(90deg,#F36F41,#F3B641,#F36F41); z-index:9999; width:0%; transition:width 0.1s; box-shadow:0 0 10px #F3B641;}
+        .float-card{animation:floatCard 4s ease-in-out infinite; box-shadow:0 0 30px rgba(100,160,255,0.3), 0 20px 40px rgba(0,0,0,0.4);}
+        @keyframes floatCard{0%,100%{transform:translateY(0px)} 50%{transform:translateY(-12px)}}
+        .glow-btn{animation:pulseGlow 2s infinite; position:relative; overflow:hidden;}
+        @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(243,182,65,0.7), 0 5px 0 #592918} 50%{box-shadow:0 0 0 8px rgba(243,182,65,0), 0 5px 0 #592918}}
+        .glow-btn::after{content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.4) 50%, transparent 80%); transform:translateX(-100%) rotate(20deg); animation:shineMove 3s infinite;}
+        @keyframes shineMove{0%{transform:translateX(-100%) rotate(20deg)} 60%,100%{transform:translateX(200%) rotate(20deg)}}
+        .reveal{opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+        .reveal.active{opacity:1; transform:translateY(0);}
+        .tilt-card{transition:transform 0.4s ease, box-shadow 0.4s ease; transform-style:preserve-3d;}
+        .tilt-card:hover{transform:perspective(1000px) rotateY(8deg) rotateX(5deg) scale(1.05); box-shadow:0 25px 50px rgba(0,0,0,0.5);}
+        .wood-hover{transition:transform 0.3s ease;}
+        .wood-hover:hover{transform:rotate(-1deg) scale(1.02);}
     </style>
 </head>
 <body class="font-zelda">
+    <div id="progressBar"></div>
     <header class="z-[60] sticky top-0">
         <nav class="relative z-[60] flex items-center justify-between backdrop-filter backdrop-blur-md bg-opacity-40 px-6 lg:px-[90px] h-[90px]">
             <div class="flex flex-row items-center gap-[60px]">
@@ -99,27 +115,26 @@
         </section>
 
         <section id="aboutme" class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-24 px-6 md:px-16 lg:px-[90px] mt-100 lg:mt-60">
-            <div class="order-1 shrink-0">
-                <div class="relative w-[240px] md:w-[280px] lg:w-[340px] aspect-[700/1040]">
-                    <img src="images/fotoku/SAVE_20261024_133843.jpg" alt="myPicture" class="absolute inset-0 w-full h-full z-10 pointer-events-none object-cover" />
-                    <!-- 1 TOMBOL VERSI FINAL - DI DALAM FRAME BIRU -->
+            <div class="order-1 shrink-0 reveal">
+                <div class="relative w-[240px] md:w-[280px] lg:w-[340px] aspect-[700/1040] float-card rounded-[12px]">
+                    <img src="images/fotoku/SAVE_20261024_133843.jpg" alt="myPicture" class="absolute inset-0 w-full h-full z-10 pointer-events-none object-cover rounded-[12px]" />
                     <div class="absolute bottom-[20px] left-0 right-0 z-20 flex justify-center">
-                        <a href="#myskills" class="px-5 py-2 bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] rounded-[8px] border-[#F3B641] border-[1px] outline-[#592918] outline-[1px] drop-shadow-[0_4px_0_#592918] hover:brightness-110 hover:scale-105 transition-all">
+                        <a href="#myskills" class="glow-btn px-5 py-2 bg-[linear-gradient(to_bottom,#F36F41_0%,#F39241_50%,#F36F41_50%,#F39241_100%)] rounded-[8px] border-[#F3B641] border-[1px] outline-[#592918] outline-[1px] drop-shadow-[0_4px_0_#592918] hover:brightness-110 hover:scale-105 transition-all">
                             <p class="uppercase text-white text-[1rem] md:text-[1.2rem] leading-none">EXPLORE MY SKILLS</p>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="order-2 flex flex-col gap-4 max-w-[560px] text-center lg:text-left">
+            <div class="order-2 flex flex-col gap-4 max-w-[560px] text-center lg:text-left reveal">
                 <h1 id="judulAbout" class="uppercase text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none select-none cursor-pointer flex flex-wrap justify-center lg:justify-start">ABOUT ME</h1>
                 <p class="px-6 lg:px-0 text-[1.25rem] md:text-[1.5rem] lg:text-[32px] leading-snug">Hello im from SMKN 1 SURABAYA software engineering my name is reza firdausi el rosyadi my hobbi is playing games and basketball im proplayer ex imo santay</p>
             </div>
         </section>
 
         <section id="myskills" class="flex justify-center mt-100">
-            <div class="flex flex-col text-center gap-4">
+            <div class="flex flex-col text-center gap-4 reveal">
                 <h1 id="judulSkills" class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_10px_0_#7A3D21] leading-none select-none cursor-pointer flex justify-center flex-wrap">MY SKILLS</h1>
-                <div class="relative">
+                <div class="relative wood-hover">
                     <img src="images/My-Skills/wood plank.svg" alt="Papan kayu" class="hidden md:block lg:w-[769.08px] md:w-[500.17px]"><img src="images/My-Skills/wood plank - mobile.svg" alt="Papan kayu" class="block md:hidden w-[25rem]">
                     <div class="absolute inset-0 flex flex-col text-left px-15 pt-10 gap-1 text-[#592918]">
                         <h1 class="text-[2.75rem] md:text-[2.5rem] lg:text-[3.75rem]">Aku tertarik belajar</h1>
@@ -132,9 +147,9 @@
 
         <section id="experience" class="mt-100 mb-50">
             <div class="flex flex-col gap-[1rem] items-center">
-                <h1 id="judulExperience" class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_5px_0_#7A3D21] text-center select-none cursor-pointer flex justify-center flex-wrap">MY EXPERIENCE</h1>
-                <div class="flex flex-col md:flex-row gap-[1rem]"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto1.png"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto2.png"></div>
-                <div class="flex flex-col md:flex-row gap-[1rem]"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto3.png"><img class="w-[600px] hover:scale-[1.02] transition duration-300" src="images/fotoku/foto4.png"></div>
+                <h1 id="judulExperience" class="text-[3.5rem] md:text-[4.5rem] lg:text-[6rem] text-white [-webkit-text-stroke:1px_#7A3D21] lg:[-webkit-text-stroke:2px_#7A3D21] text-shadow-[0_5px_0_#7A3D21] lg:text-shadow-[0_5px_0_#7A3D21] text-center select-none cursor-pointer flex justify-center flex-wrap reveal">MY EXPERIENCE</h1>
+                <div class="flex flex-col md:flex-row gap-[1rem] reveal"><img class="w-[600px] tilt-card rounded-xl" src="images/fotoku/foto1.png"><img class="w-[600px] tilt-card rounded-xl" src="images/fotoku/foto2.png"></div>
+                <div class="flex flex-col md:flex-row gap-[1rem] reveal"><img class="w-[600px] tilt-card rounded-xl" src="images/fotoku/foto3.png"><img class="w-[600px] tilt-card rounded-xl" src="images/fotoku/foto4.png"></div>
             </div>
         </section>
     </main>
@@ -196,6 +211,22 @@
         judul.addEventListener('click', ()=>{ judul.querySelectorAll('.huruf').forEach((h,i)=>{ setTimeout(()=>{ h.classList.remove('loncat'); void h.offsetWidth; h.classList.add('loncat'); setTimeout(()=>h.classList.remove('loncat'),600); }, i*50); }); });
       }
       bikinHurufLoncat('judulGerak'); bikinHurufLoncat('judulAbout'); bikinHurufLoncat('judulSkills'); bikinHurufLoncat('judulExperience');
+
+      // === ANIMASI BARU ===
+      // Progress Bar
+      window.addEventListener('scroll', ()=>{
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+      });
+      // Scroll Reveal
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting) entry.target.classList.add('active');
+        });
+      }, {threshold:0.15});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     </script>
 </body>
 </html>
